@@ -519,28 +519,28 @@
           <div style="display: grid; grid-template-columns: 1fr; gap: 8px; margin-bottom: 12px;">
             <div style="position: relative;">
               <i class="fas fa-search" style="position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: #4b5563; pointer-events: none;"></i>
-              <input type="text" id="fSearch" oninput="renderTicketList()" placeholder="Cari ID, nama, alamat, no WA..."
-                style="width: 100%; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 12px 14px 12px 42px; color: #e5e7eb; outline: none; font-size: 14px;">
+              <input type="text" id="fSearch" oninput="renderTicketList()" placeholder="Cari ID, nama, alamat..."
+                style="width: 100%; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 12px 14px 12px 42px; color: #e5e7eb; outline: none; font-size: 14px; box-sizing: border-box;">
             </div>
-            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
-              <select id="fStatus" onchange="renderTicketList()" style="background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 10px 12px; font-size: 13px; color: #e5e7eb; outline: none;">
+            <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px;">
+              <select id="fStatus" onchange="renderTicketList()" style="width: 100%; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 10px 12px; font-size: 12px; color: #e5e7eb; outline: none; box-sizing: border-box; -webkit-appearance: none; appearance: none;">
                 <option value="">Semua Status</option>
                 <option value="Terkirim">Terkirim</option>
-                <option value="Diterima Admin">Diterima Admin</option>
+                <option value="Diterima Admin">Diterima</option>
                 <option value="Ditugaskan">Ditugaskan</option>
-                <option value="Teknisi OTW">Teknisi OTW</option>
-                <option value="Dalam Pengerjaan">Dalam Pengerjaan</option>
+                <option value="Teknisi OTW">OTW</option>
+                <option value="Dalam Pengerjaan">Dikerjakan</option>
                 <option value="Pending">Pending</option>
                 <option value="Selesai">Selesai</option>
               </select>
-              <select id="fPriority" onchange="renderTicketList()" style="background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 10px 12px; font-size: 13px; color: #e5e7eb; outline: none;">
+              <select id="fPriority" onchange="renderTicketList()" style="width: 100%; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 10px 12px; font-size: 12px; color: #e5e7eb; outline: none; box-sizing: border-box; -webkit-appearance: none; appearance: none;">
                 <option value="">Semua Prioritas</option>
                 <option value="Low">Low</option>
                 <option value="Medium">Medium</option>
                 <option value="High">High</option>
                 <option value="Critical">Critical</option>
               </select>
-              <select id="fKategori" onchange="renderTicketList()" style="background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 10px 12px; font-size: 13px; color: #e5e7eb; outline: none;">
+              <select id="fKategori" onchange="renderTicketList()" style="width: 100%; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 10px 12px; font-size: 12px; color: #e5e7eb; outline: none; box-sizing: border-box; -webkit-appearance: none; appearance: none;">
                 <option value="">Semua Kategori</option>
                 <option value="Internet Mati Total">Internet Mati Total</option>
                 <option value="Lemot">Lemot</option>
@@ -549,11 +549,13 @@
                 <option value="Tidak Bisa Browsing">Tidak Bisa Browsing</option>
                 <option value="Router Bermasalah">Router Bermasalah</option>
               </select>
-              <select id="fTeknisi" onchange="renderTicketList()" style="background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 10px 12px; font-size: 13px; color: #e5e7eb; outline: none;">
+              <select id="fTeknisi" onchange="renderTicketList()" style="width: 100%; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 10px 12px; font-size: 12px; color: #e5e7eb; outline: none; box-sizing: border-box; -webkit-appearance: none; appearance: none;">
                 <option value="">Semua Teknisi</option>
               </select>
-              <input type="date" id="fStart" onchange="renderTicketList()" style="background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 10px 12px; font-size: 13px; color: #e5e7eb; outline: none;">
-              <input type="date" id="fEnd" onchange="renderTicketList()" style="background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 10px 12px; font-size: 13px; color: #e5e7eb; outline: none;">
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px;">
+              <input type="date" id="fStart" onchange="renderTicketList()" style="width: 100%; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 10px 12px; font-size: 12px; color: #e5e7eb; outline: none; box-sizing: border-box;">
+              <input type="date" id="fEnd" onchange="renderTicketList()" style="width: 100%; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 10px 12px; font-size: 12px; color: #e5e7eb; outline: none; box-sizing: border-box;">
             </div>
           </div>
 
@@ -665,24 +667,14 @@
       <!-- ═══════ VIEW: MAP ═══════ -->
       <div id="viewMap" class="view">
         <div class="glass" style="border-radius: 16px; padding: 16px; margin-bottom: 16px;">
-          <h2 style="font-size: 19px; font-weight: 700; margin-bottom: 8px;"><i class="fas fa-map-marked-alt" style="color: #00d4ff; margin-right: 8px;"></i>Peta Sebaran Gangguan</h2>
-          <p style="font-size: 12px; color: #9ca3af;">Menampilkan tiket dengan koordinat GPS. Klik tiket untuk detail.</p>
-          <div style="display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px; font-size: 11px;">
-            <span style="display: flex; align-items: center; gap: 4px;"><span style="width: 12px; height: 12px; border-radius: 50%; background: #3b82f6;"></span>Terkirim</span>
-            <span style="display: flex; align-items: center; gap: 4px;"><span style="width: 12px; height: 12px; border-radius: 50%; background: #facc15;"></span>OTW</span>
-            <span style="display: flex; align-items: center; gap: 4px;"><span style="width: 12px; height: 12px; border-radius: 50%; background: #fb923c;"></span>Dikerjakan</span>
-            <span style="display: flex; align-items: center; gap: 4px;"><span style="width: 12px; height: 12px; border-radius: 50%; background: #ef4444;"></span>Critical/SOS</span>
-            <span style="display: flex; align-items: center; gap: 4px;"><span style="width: 12px; height: 12px; border-radius: 50%; background: #34d399;"></span>Selesai</span>
-          </div>
+          <h2 style="font-size: 19px; font-weight: 700; margin-bottom: 8px;"><i class="fas fa-map-marked-alt" style="color: #00d4ff; margin-right: 8px;"></i>Lokasi Customer</h2>
+          <p style="font-size: 12px; color: #9ca3af;">Daftar tiket dengan koordinat GPS. Klik tombol untuk buka Google Maps.</p>
         </div>
 
-        <div class="glass" style="border-radius: 16px; padding: 8px; margin-bottom: 16px; overflow: hidden;">
-          <iframe id="mapFrame" style="width: 100%; height: 500px; border: 0; border-radius: 12px;" loading="lazy" allowfullscreen></iframe>
-        </div>
-
-        <div class="glass" style="border-radius: 16px; padding: 16px;">
-          <h3 style="font-size: 14px; font-weight: 700; margin-bottom: 12px;">Tiket dengan Lokasi:</h3>
-          <div id="mapTicketList" style="display: flex; flex-direction: column; gap: 8px; max-height: 400px; overflow-y: auto;"></div>
+        <div id="mapTicketList" style="display: flex; flex-direction: column; gap: 10px;"></div>
+        <div id="mapEmpty" style="display: none; text-align: center; padding: 40px 20px; border-radius: 14px;" class="glass">
+          <i class="fas fa-map-marker-slash" style="font-size: 40px; color: #374151;"></i>
+          <p style="color: #9ca3af; margin-top: 12px;">Belum ada tiket dengan koordinat</p>
         </div>
       </div>
 
@@ -731,7 +723,7 @@
         </div>
       </div>
 
-      <!-- ═══════ VIEW: SETTINGS ═══════ -->
+      <!-- ═══════════ VIEW: SETTINGS ═══════════ -->
       <div id="viewSettings" class="view">
         <div class="glass" style="border-radius: 16px; padding: 16px; margin-bottom: 16px;">
           <h2 style="font-size: 19px; font-weight: 700; margin-bottom: 16px;"><i class="fas fa-cog" style="color: #00d4ff; margin-right: 8px;"></i>Pengaturan Sistem</h2>
@@ -739,29 +731,29 @@
           <div style="display: flex; flex-direction: column; gap: 16px;">
             <div>
               <label style="font-size: 13px; color: #9ca3af; display: block; margin-bottom: 6px;">Pesan Auto-Reply Tiket Baru</label>
-              <textarea id="setAutoReply" rows="3" style="width: 100%; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 12px 14px; color: #e5e7eb; outline: none; resize: vertical; font-family: inherit; font-size: 13px;"></textarea>
+              <textarea id="setAutoReply" rows="3" style="width: 100%; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 12px 14px; color: #e5e7eb; outline: none; resize: vertical; font-family: inherit; font-size: 13px; box-sizing: border-box;"></textarea>
             </div>
 
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+            <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px;">
               <div>
                 <label style="font-size: 13px; color: #9ca3af; display: block; margin-bottom: 6px;">SLA Standar (jam)</label>
-                <input type="number" id="setSLA" min="1" style="width: 100%; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 12px 14px; color: #e5e7eb; outline: none;">
+                <input type="number" id="setSLA" min="1" style="width: 100%; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 12px 14px; color: #e5e7eb; outline: none; box-sizing: border-box;">
               </div>
               <div>
                 <label style="font-size: 13px; color: #9ca3af; display: block; margin-bottom: 6px;">SLA Emergency (jam)</label>
-                <input type="number" id="setSLAEmergency" min="1" style="width: 100%; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 12px 14px; color: #e5e7eb; outline: none;">
+                <input type="number" id="setSLAEmergency" min="1" style="width: 100%; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 12px 14px; color: #e5e7eb; outline: none; box-sizing: border-box;">
               </div>
             </div>
 
             <div>
               <label style="font-size: 13px; color: #9ca3af; display: block; margin-bottom: 6px;">Kategori Gangguan (pisahkan dengan koma)</label>
-              <input type="text" id="setKategori" style="width: 100%; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 12px 14px; color: #e5e7eb; outline: none; font-size: 13px;">
+              <input type="text" id="setKategori" style="width: 100%; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 12px 14px; color: #e5e7eb; outline: none; font-size: 13px; box-sizing: border-box;">
             </div>
 
             <div>
-              <label style="font-size: 13px; color: #9ca3af; display: block; margin-bottom: 6px;">Logo Perusahaan (URL dari IMGBB)</label>
+              <label style="font-size: 13px; color: #9ca3af; display: block; margin-bottom: 6px;">Logo Perusahaan (URL IMGBB)</label>
               <div style="display: flex; gap: 8px;">
-                <input type="text" id="setLogoUrl" placeholder="https://i.ibb.co/..." style="flex: 1; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 12px 14px; color: #e5e7eb; outline: none; font-size: 13px;">
+                <input type="text" id="setLogoUrl" placeholder="https://i.ibb.co/..." style="flex: 1; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 12px 14px; color: #e5e7eb; outline: none; font-size: 13px; min-width: 0; box-sizing: border-box;">
                 <button type="button" onclick="openLogoUpload()" style="padding: 0 14px; background: rgba(0, 212, 255, 0.15); border: 1px solid rgba(0, 212, 255, 0.3); border-radius: 10px; color: #00d4ff;">
                   <i class="fas fa-upload"></i>
                 </button>
@@ -776,19 +768,61 @@
           </div>
         </div>
 
+        <!-- MAINTENANCE DENGAN ALASAN & WAKTU -->
+        <div class="glass" style="border-radius: 16px; padding: 16px; margin-bottom: 16px;">
+          <h3 style="font-size: 15px; font-weight: 700; color: #facc15; margin-bottom: 6px;">
+            <i class="fas fa-tools" style="margin-right: 8px;"></i>Jadwalkan Maintenance
+          </h3>
+          <p style="font-size: 12px; color: #9ca3af; margin-bottom: 14px;">Pop-up notifikasi akan muncul di layar customer & teknisi saat waktu maintenance tiba.</p>
+          <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div>
+              <label style="font-size: 13px; color: #9ca3af; display: block; margin-bottom: 6px;">Judul Maintenance</label>
+              <input type="text" id="maintTitle" placeholder="Contoh: Maintenance Jaringan Area Jakarta" style="width: 100%; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 12px 14px; color: #e5e7eb; outline: none; font-size: 13px; box-sizing: border-box;">
+            </div>
+            <div>
+              <label style="font-size: 13px; color: #9ca3af; display: block; margin-bottom: 6px;">Alasan / Deskripsi</label>
+              <textarea id="maintReason" rows="3" placeholder="Contoh: Peningkatan kapasitas backbone, akan ada gangguan sementara 2-3 jam." style="width: 100%; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 12px 14px; color: #e5e7eb; outline: none; resize: vertical; font-family: inherit; font-size: 13px; box-sizing: border-box;"></textarea>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px;">
+              <div>
+                <label style="font-size: 13px; color: #9ca3af; display: block; margin-bottom: 6px;">Mulai</label>
+                <input type="datetime-local" id="maintStart" style="width: 100%; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 12px 14px; color: #e5e7eb; outline: none; font-size: 12px; box-sizing: border-box;">
+              </div>
+              <div>
+                <label style="font-size: 13px; color: #9ca3af; display: block; margin-bottom: 6px;">Selesai</label>
+                <input type="datetime-local" id="maintEnd" style="width: 100%; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 12px 14px; color: #e5e7eb; outline: none; font-size: 12px; box-sizing: border-box;">
+              </div>
+            </div>
+            <div>
+              <label style="font-size: 13px; color: #9ca3af; display: block; margin-bottom: 6px;">Target Penerima</label>
+              <select id="maintTarget" style="width: 100%; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 12px 14px; color: #e5e7eb; outline: none; font-size: 13px; box-sizing: border-box;">
+                <option value="all">Semua Customer</option>
+                <option value="area">Per Area (ketik di bawah)</option>
+              </select>
+              <input type="text" id="maintArea" placeholder="Nama area (opsional)" style="width: 100%; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 10px 14px; color: #e5e7eb; outline: none; font-size: 13px; margin-top: 8px; box-sizing: border-box; display: none;">
+            </div>
+            <button onclick="submitMaintenance()" class="btn-warn" style="width: 100%; padding: 14px; border-radius: 12px; font-size: 14px;">
+              <i class="fas fa-paper-plane" style="margin-right: 8px;"></i>Jadwalkan & Kirim Notifikasi
+            </button>
+          </div>
+        </div>
+
+        <!-- DAFTAR MAINTENANCE AKTIF -->
+        <div class="glass" style="border-radius: 16px; padding: 16px; margin-bottom: 16px;">
+          <h3 style="font-size: 15px; font-weight: 700; margin-bottom: 12px;"><i class="fas fa-list" style="color: #00d4ff; margin-right: 8px;"></i>Maintenance Aktif</h3>
+          <div id="maintList" style="display: flex; flex-direction: column; gap: 8px;"></div>
+        </div>
+
         <div class="glass" style="border-radius: 16px; padding: 16px;">
           <h3 style="font-size: 14px; font-weight: 700; color: #f87171; margin-bottom: 14px;">
-            <i class="fas fa-tools" style="margin-right: 8px;"></i>Maintenance
+            <i class="fas fa-broom" style="margin-right: 8px;"></i>Maintenance Data
           </h3>
           <div style="display: flex; flex-direction: column; gap: 8px;">
             <button onclick="cleanOldTickets()" style="padding: 12px 14px; border-radius: 10px; border: 1px solid #1f2937; text-align: left; font-size: 13px; color: #e5e7eb; display: flex; align-items: center; gap: 10px;">
-              <i class="fas fa-broom" style="color: #facc15;"></i>Arsipkan tiket selesai &gt; 90 hari
+              <i class="fas fa-archive" style="color: #facc15;"></i>Arsipkan tiket selesai &gt; 90 hari
             </button>
             <button onclick="recalculateRatings()" style="padding: 12px 14px; border-radius: 10px; border: 1px solid #1f2937; text-align: left; font-size: 13px; color: #e5e7eb; display: flex; align-items: center; gap: 10px;">
               <i class="fas fa-calculator" style="color: #00d4ff;"></i>Recalculate rating teknisi
-            </button>
-            <button onclick="openBroadcast()" style="padding: 12px 14px; border-radius: 10px; border: 1px solid #1f2937; text-align: left; font-size: 13px; color: #e5e7eb; display: flex; align-items: center; gap: 10px;">
-              <i class="fas fa-bullhorn" style="color: #c084fc;"></i>Kirim Pengumuman ke Customer
             </button>
           </div>
         </div>
@@ -837,19 +871,57 @@
   </div>
 </div>
 
-<!-- ═══════════ MODAL: ASSIGN TEKNISI ═══════════ -->
-<div id="assignModal" class="modal-overlay">
-  <div class="glass slide-up" style="border-radius: 20px; padding: 24px; width: 100%; max-width: 480px;">
-    <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 8px;"><i class="fas fa-user-check" style="color: #00d4ff; margin-right: 8px;"></i>Assign Tiket ke Teknisi</h3>
-    <p id="assignInfo" style="font-size: 13px; color: #9ca3af; margin-bottom: 16px; line-height: 1.6;"></p>
-    <label style="font-size: 13px; color: #9ca3af; display: block; margin-bottom: 6px;">Pilih Teknisi</label>
-    <select id="assignTeknisiSelect" style="width: 100%; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 12px 14px; color: #e5e7eb; outline: none; margin-bottom: 14px; font-size: 13px;"></select>
-    <label style="font-size: 13px; color: #9ca3af; display: block; margin-bottom: 6px;">Catatan untuk Teknisi (Opsional)</label>
-    <textarea id="assignNote" rows="2" placeholder="Contoh: Prioritaskan, customer VIP" style="width: 100%; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 12px 14px; color: #e5e7eb; outline: none; margin-bottom: 16px; resize: vertical; font-family: inherit; font-size: 13px;"></textarea>
+<!-- ═══════════ MODAL: TERIMA TIKET ═══════════ -->
+<div id="acceptTicketModal" class="modal-overlay">
+  <div class="glass slide-up" style="border-radius: 20px; padding: 24px; width: 100%; max-width: 440px;">
+    <div style="text-align: center; margin-bottom: 18px;">
+      <div style="width: 64px; height: 64px; background: rgba(16, 185, 129, 0.15); border-radius: 50%; margin: 0 auto 12px; display: flex; align-items: center; justify-content: center;">
+        <i class="fas fa-hand-holding-heart" style="color: #34d399; font-size: 28px;"></i>
+      </div>
+      <h3 style="font-size: 18px; font-weight: 700;">Terima Tiket Ini?</h3>
+      <p id="acceptTicketInfo" style="font-size: 13px; color: #9ca3af; margin-top: 8px; line-height: 1.6;"></p>
+    </div>
+    <label style="font-size: 13px; color: #9ca3af; display: block; margin-bottom: 6px;">Tugaskan ke Teknisi</label>
+    <select id="acceptTeknisiSelect" style="width: 100%; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 12px 14px; color: #e5e7eb; outline: none; margin-bottom: 14px; font-size: 13px;"></select>
+    <label style="font-size: 13px; color: #9ca3af; display: block; margin-bottom: 6px;">Catatan (Opsional)</label>
+    <textarea id="acceptNote" rows="2" placeholder="Contoh: Prioritaskan" style="width: 100%; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 12px 14px; color: #e5e7eb; outline: none; margin-bottom: 16px; resize: vertical; font-family: inherit; font-size: 13px;"></textarea>
     <div style="display: flex; gap: 10px;">
-      <button onclick="closeAssignModal()" style="flex: 1; padding: 12px; border-radius: 10px; border: 1px solid #1f2937; color: #e5e7eb; font-size: 14px;">Batal</button>
-      <button onclick="confirmAssign()" class="btn-primary" style="flex: 1; padding: 12px; border-radius: 10px; font-size: 14px;">
-        <i class="fas fa-check" style="margin-right: 6px;"></i>Assign
+      <button onclick="closeAcceptTicketModal()" style="flex: 1; padding: 12px; border-radius: 10px; border: 1px solid #1f2937; color: #e5e7eb; font-size: 14px;">Batal</button>
+      <button onclick="confirmAcceptTicket()" class="btn-success" style="flex: 1; padding: 12px; border-radius: 10px; font-size: 14px;">
+        <i class="fas fa-check" style="margin-right: 6px;"></i>Terima & Assign
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ MODAL: TAMBAH TEKNISI ═══════════ -->
+<div id="addTeknisiModal" class="modal-overlay">
+  <div class="glass slide-up" style="border-radius: 20px; padding: 24px; width: 100%; max-width: 440px; max-height: 90vh; overflow-y: auto;">
+    <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 16px;"><i class="fas fa-user-plus" style="color: #00d4ff; margin-right: 8px;"></i>Tambah Teknisi Baru</h3>
+    <label style="font-size: 13px; color: #9ca3af; display: block; margin-bottom: 6px;">UID Teknisi <span style="color: #f87171;">*</span></label>
+    <input type="text" id="newTekUid" placeholder="Min 8 karakter, wajib 2 angka" autocomplete="off" style="width: 100%; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 12px 14px; color: #e5e7eb; outline: none; font-family: ui-monospace, monospace; font-size: 14px; margin-bottom: 12px; box-sizing: border-box;">
+    <label style="font-size: 13px; color: #9ca3af; display: block; margin-bottom: 6px;">Nama Lengkap <span style="color: #f87171;">*</span></label>
+    <input type="text" id="newTekNama" placeholder="Contoh: Budi Santoso" style="width: 100%; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 12px 14px; color: #e5e7eb; outline: none; font-size: 14px; margin-bottom: 12px; box-sizing: border-box;">
+    <label style="font-size: 13px; color: #9ca3af; display: block; margin-bottom: 6px;">No HP</label>
+    <input type="tel" id="newTekHp" placeholder="08xxxxxxxxxx" inputmode="numeric" style="width: 100%; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 12px 14px; color: #e5e7eb; outline: none; font-family: ui-monospace, monospace; font-size: 14px; margin-bottom: 12px; box-sizing: border-box;">
+    <label style="font-size: 13px; color: #9ca3af; display: block; margin-bottom: 6px;">Area Kerja</label>
+    <input type="text" id="newTekArea" placeholder="Contoh: Jakarta Selatan" style="width: 100%; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 12px 14px; color: #e5e7eb; outline: none; font-size: 14px; margin-bottom: 12px; box-sizing: border-box;">
+    <label style="font-size: 13px; color: #9ca3af; display: block; margin-bottom: 6px;">Shift Kerja</label>
+    <select id="newTekShift" style="width: 100%; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 12px 14px; color: #e5e7eb; outline: none; font-size: 14px; margin-bottom: 12px; box-sizing: border-box;">
+      <option value="Pagi (07:00 - 15:00)">Pagi (07:00 - 15:00)</option>
+      <option value="Sore (15:00 - 23:00)">Sore (15:00 - 23:00)</option>
+      <option value="Malam (23:00 - 07:00)">Malam (23:00 - 07:00)</option>
+      <option value="On Call">On Call</option>
+    </select>
+    <div style="background: rgba(0, 212, 255, 0.08); border: 1px solid rgba(0, 212, 255, 0.2); border-radius: 10px; padding: 10px; font-size: 12px; color: #9ca3af; margin-bottom: 16px;">
+      <i class="fas fa-info-circle" style="color: #00d4ff; margin-right: 4px;"></i>
+      Teknisi login di <b>pekerja.html</b> pakai UID ini. Tidak perlu password.
+    </div>
+    <div id="addTekError" style="display: none; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 10px; padding: 10px; font-size: 12px; color: #f87171; margin-bottom: 12px;"></div>
+    <div style="display: flex; gap: 10px;">
+      <button onclick="closeAddTeknisi()" style="flex: 1; padding: 12px; border-radius: 10px; border: 1px solid #1f2937; color: #e5e7eb; font-size: 14px;">Batal</button>
+      <button onclick="submitAddTeknisi()" id="submitTekBtn" class="btn-primary" style="flex: 1; padding: 12px; border-radius: 10px; font-size: 14px;">
+        <i class="fas fa-check" style="margin-right: 6px;"></i>Buat Akun
       </button>
     </div>
   </div>
@@ -1591,8 +1663,6 @@ function renderTicketList() {
     if (kat && t.kategori !== kat) return false;
     if (tek && t.teknisiUid !== tek) return false;
     if (t.createdAt < start || t.createdAt > end) return false;
-
-    // Quick filter
     if (quickFilterMode === 'overdue' && (t.status === 'Selesai' || t.slaDeadline > Date.now())) return false;
     if (quickFilterMode === 'emergency' && !t.isEmergency) return false;
     if (quickFilterMode === 'unassigned' && (t.teknisiUid || (t.status !== 'Terkirim' && t.status !== 'Diterima Admin'))) return false;
@@ -1619,6 +1689,8 @@ function renderTicketList() {
     const slaM = Math.floor((Math.abs(slaLeft) % 3600000) / 60000);
     const slaText = t.status === 'Selesai' ? 'Selesai' : slaLeft > 0 ? slaH + 'j ' + slaM + 'm' : '+' + slaH + 'j ' + slaM + 'm';
     const slaClr = t.status === 'Selesai' ? '#34d399' : slaLeft > 0 ? (slaLeft < 4 * 3600000 ? '#fb923c' : '#9ca3af') : '#f87171';
+    // Tombol terima hanya untuk tiket yang belum diassign
+    const canAccept = !t.teknisiUid && (t.status === 'Terkirim' || t.status === 'Diterima Admin');
 
     return '<div class="glass fade-in ' + slaClass + '" style="border-radius: 12px; padding: 14px;">' +
       '<div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; flex-wrap: wrap;">' +
@@ -1633,6 +1705,7 @@ function renderTicketList() {
       '<p style="font-weight: 600; font-size: 14px;">' + escapeHtml(t.kategori) + '</p>' +
       '<p style="font-size: 12px; color: #9ca3af; margin-top: 4px;"><i class="fas fa-user" style="margin-right: 4px;"></i>' + escapeHtml(t.customerName || '-') + ' · <i class="fas fa-phone" style="margin-left: 6px; margin-right: 4px;"></i>' + escapeHtml(t.noWa || '-') + '</p>' +
       '<p style="font-size: 11px; color: #6b7280; margin-top: 2px;" class="line-clamp-1"><i class="fas fa-map-marker-alt" style="margin-right: 4px;"></i>' + escapeHtml(t.alamat || '-') + '</p>' +
+      (t.koordinat ? '<p style="font-size: 11px; color: #60a5fa; margin-top: 4px;"><i class="fas fa-crosshairs" style="margin-right: 4px;"></i>' + escapeHtml(t.koordinat) + ' <button onclick="event.stopPropagation(); openMaps(\'' + escapeHtml(t.koordinat) + '\')" style="margin-left: 6px; padding: 3px 8px; background: rgba(96, 165, 250, 0.15); border: 1px solid rgba(96, 165, 250, 0.3); border-radius: 6px; color: #60a5fa; font-size: 10px; font-weight: 600;"><i class="fas fa-external-link-alt"></i> Buka Maps</button></p>' : '') +
       (t.teknisiName ? '<p style="font-size: 11px; color: #00d4ff; margin-top: 4px;"><i class="fas fa-tools" style="margin-right: 4px;"></i>Teknisi: <b>' + escapeHtml(t.teknisiName) + '</b></p>' : '') +
       '</div>' +
       '<div style="text-align: right; flex-shrink: 0;">' +
@@ -1640,19 +1713,29 @@ function renderTicketList() {
       '<p style="font-size: 10px; color: #6b7280; margin-top: 4px;">' + timeAgo(t.createdAt) + '</p>' +
       '</div></div>' +
       '<div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 12px; padding-top: 12px; border-top: 1px solid #1f2937;">' +
-      '<button onclick="openTicketDetail(\'' + t.id + '\')" style="padding: 6px 12px; border-radius: 8px; font-size: 11px; background: rgba(17,24,39,0.6); border: 1px solid #1f2937; color: #e5e7eb;">' +
-      '<i class="fas fa-eye" style="margin-right: 4px;"></i>Detail</button>' +
+      '<button onclick="openTicketDetail(\'' + t.id + '\')" style="padding: 8px 12px; border-radius: 8px; font-size: 11px; background: rgba(17,24,39,0.6); border: 1px solid #1f2937; color: #e5e7eb; display: inline-flex; align-items: center; gap: 4px;">' +
+      '<i class="fas fa-eye"></i>Detail</button>' +
+      (canAccept ?
+        '<button onclick="openAcceptTicketModal(\'' + t.id + '\')" class="btn-success" style="padding: 8px 12px; border-radius: 8px; font-size: 11px; display: inline-flex; align-items: center; gap: 4px;">' +
+        '<i class="fas fa-hand-holding-heart"></i>Terima</button>' : '') +
       (t.status !== 'Selesai' ?
-        '<button onclick="openAssignModal(\'' + t.id + '\')" class="btn-primary" style="padding: 6px 12px; border-radius: 8px; font-size: 11px;">' +
-        '<i class="fas fa-user-check" style="margin-right: 4px;"></i>' + (t.teknisiUid ? 'Ganti Teknisi' : 'Assign') + '</button>' +
-        '<button onclick="openEditModal(\'' + t.id + '\')" style="padding: 6px 12px; border-radius: 8px; font-size: 11px; background: rgba(17,24,39,0.6); border: 1px solid #1f2937; color: #facc15;">' +
-        '<i class="fas fa-edit" style="margin-right: 4px;"></i>Ubah</button>' +
-        '<button onclick="requestDeleteTicket(\'' + t.id + '\')" style="padding: 6px 12px; border-radius: 8px; font-size: 11px; background: rgba(17,24,39,0.6); border: 1px solid #1f2937; color: #f87171;">' +
-        '<i class="fas fa-trash" style="margin-right: 4px;"></i>Hapus</button>' : '') +
-      '<button onclick="showView(\'Chat\',\'' + t.id + '\')" style="padding: 6px 12px; border-radius: 8px; font-size: 11px; background: rgba(17,24,39,0.6); border: 1px solid #1f2937; color: #00d4ff;">' +
-      '<i class="fas fa-comments" style="margin-right: 4px;"></i>Chat</button>' +
+        '<button onclick="openAssignModal(\'' + t.id + '\')" class="btn-primary" style="padding: 8px 12px; border-radius: 8px; font-size: 11px; display: inline-flex; align-items: center; gap: 4px;">' +
+        '<i class="fas fa-user-check"></i>' + (t.teknisiUid ? 'Ganti' : 'Assign') + '</button>' +
+        '<button onclick="openEditModal(\'' + t.id + '\')" class="btn-warn" style="padding: 8px 12px; border-radius: 8px; font-size: 11px; display: inline-flex; align-items: center; gap: 4px;">' +
+        '<i class="fas fa-edit"></i>Ubah</button>' +
+        '<button onclick="requestDeleteTicket(\'' + t.id + '\')" class="btn-danger" style="padding: 8px 12px; border-radius: 8px; font-size: 11px; display: inline-flex; align-items: center; gap: 4px;">' +
+        '<i class="fas fa-trash"></i>Hapus</button>' : '') +
+      '<button onclick="showView(\'Chat\',\'' + t.id + '\')" style="padding: 8px 12px; border-radius: 8px; font-size: 11px; background: rgba(17,24,39,0.6); border: 1px solid #1f2937; color: #00d4ff; display: inline-flex; align-items: center; gap: 4px;">' +
+      '<i class="fas fa-comments"></i>Chat</button>' +
       '</div></div>';
   }).join('');
+}
+
+// Buka Google Maps
+function openMaps(koordinat) {
+  if (!koordinat || !koordinat.includes(',')) return toast('Koordinat tidak tersedia', 'warn');
+  const url = 'https://www.google.com/maps?q=' + encodeURIComponent(koordinat);
+  window.open(url, '_blank');
 }
 
 /* ═══════════════════════════════════════════════════
@@ -1721,7 +1804,14 @@ function loadTicketDetail(id) {
     '</div>' +
     '<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 14px;">' +
     '<a href="tel:' + escapeHtml(t.noWa || '') + '" class="glass" style="padding: 10px; border-radius: 10px; text-align: center; font-size: 12px;"><i class="fas fa-phone" style="color: #34d399; margin-right: 4px;"></i>Telepon</a>' +
-    '<a href="' + mapsUrl + '" target="_blank" class="glass" style="padding: 10px; border-radius: 10px; text-align: center; font-size: 12px;"><i class="fas fa-map" style="color: #60a5fa; margin-right: 4px;"></i>Maps</a>' +
+    (t.koordinat ? '<button onclick="openMaps(\'' + escapeHtml(t.koordinat) + '\')" class="glass" style="padding: 10px; border-radius: 10px; text-align: center; font-size: 12px; cursor: pointer;"><i class="fas fa-map-marked-alt" style="color: #60a5fa; margin-right: 4px;"></i>Google Maps</button>' :
+    '<a href="' + mapsUrl + '" target="_blank" class="glass" style="padding: 10px; border-radius: 10px; text-align: center; font-size: 12px;"><i class="fas fa-map" style="color: #60a5fa; margin-right: 4px;"></i>Maps (Alamat)</a>') +
+    '</div>' +
+    (t.koordinat ? '<div style="margin-top: 10px; background: rgba(96, 165, 250, 0.08); border: 1px solid rgba(96, 165, 250, 0.2); border-radius: 10px; padding: 10px; display: flex; align-items: center; gap: 8px;">' +
+    '<i class="fas fa-crosshairs" style="color: #60a5fa;"></i>' +
+    '<div style="flex: 1; min-width: 0;"><p style="font-size: 10px; color: #6b7280;">Koordinat GPS</p><p style="font-family: ui-monospace, monospace; font-size: 12px; color: #60a5fa;">' + escapeHtml(t.koordinat) + '</p></div>' +
+    '<button onclick="copyText(\'' + escapeHtml(t.koordinat) + '\')" style="padding: 6px 10px; border-radius: 8px; background: rgba(96, 165, 250, 0.15); border: 1px solid rgba(96, 165, 250, 0.3); color: #60a5fa; font-size: 11px;"><i class="fas fa-copy"></i></button>' +
+    '</div>' : '') +
     '</div></div>' +
 
     '<div class="glass" style="border-radius: 16px; padding: 20px; margin-bottom: 16px;">' +
@@ -1822,12 +1912,63 @@ async function confirmAssign() {
   } catch (err) { toast('Gagal: ' + err.message, 'error'); }
 }
 
+function openAcceptTicketModal(id) {
+  selectedTicketId = id;
+  const t = ticketsCache[id];
+  document.getElementById('acceptTicketInfo').innerHTML = '<b>' + escapeHtml(t.kategori) + '</b><br>' + escapeHtml(t.customerName) + '<br>' + escapeHtml(t.alamat);
+  const sel = document.getElementById('acceptTeknisiSelect');
+  const avail = teknisiList.filter(tk => tk.status !== 'nonaktif' && tk.tersedia !== false);
+  if (avail.length === 0) {
+    sel.innerHTML = '<option value="">-- Tidak ada teknisi online --</option>';
+  } else {
+    sel.innerHTML = '<option value="">-- Pilih Teknisi --</option>' + avail.map(tk => {
+      const done = allTickets.filter(x => x.teknisiUid === tk.uid && x.status !== 'Selesai').length;
+      return '<option value="' + tk.uid + '">' + escapeHtml(tk.nama || tk.uid) + ' (' + (tk.area || 'N/A') + ') - ' + done + ' aktif</option>';
+    }).join('');
+  }
+  document.getElementById('acceptNote').value = '';
+  document.getElementById('acceptTicketModal').classList.add('show');
+}
+function closeAcceptTicketModal() { document.getElementById('acceptTicketModal').classList.remove('show'); }
+async function confirmAcceptTicket() {
+  const tekUid = document.getElementById('acceptTeknisiSelect').value;
+  if (!tekUid) return toast('Pilih teknisi dulu', 'warn');
+  const note = document.getElementById('acceptNote').value.trim();
+  const tk = teknisiList.find(x => x.uid === tekUid);
+  if (!tk) return toast('Teknisi tidak ditemukan', 'error');
+  try {
+    const now = Date.now();
+    await db.ref('tickets/' + selectedTicketId).update({
+      teknisiUid: tekUid,
+      teknisiName: tk.nama || tekUid,
+      status: 'Ditugaskan',
+      assignedAt: now,
+      assignedBy: 'Admin NOC',
+      assignNote: note,
+      updatedAt: now,
+      'timeline/Diterima Admin': now,
+      'timeline/Ditugaskan': now
+    });
+    await db.ref('chats/' + selectedTicketId).push({
+      senderId: 'SYSTEM',
+      senderName: 'Admin NOC',
+      senderRole: 'system',
+      message: 'Tiket Anda telah diterima dan ditugaskan ke teknisi: ' + (tk.nama || tekUid) + (note ? '\nCatatan: ' + note : ''),
+      timestamp: now
+    });
+    showSuccessModal('Tiket Diterima!', 'Teknisi ' + (tk.nama || tekUid) + ' akan menangani tiket ini.');
+    toast('Tiket berhasil diterima', 'success');
+    closeAcceptTicketModal();
+  } catch (err) { toast('Gagal: ' + err.message, 'error'); }
+}
+
 /* ═══════════════════════════════════════════════════
    EDIT TICKET
 ═══════════════════════════════════════════════════ */
 function openEditModal(id) {
   selectedTicketId = id;
   const t = ticketsCache[id];
+  if (!t) return toast('Tiket tidak ditemukan', 'error');
   document.getElementById('editStatus').value = t.status;
   document.getElementById('editPriority').value = t.priority;
   document.getElementById('editModal').classList.add('show');
@@ -1987,8 +2128,12 @@ async function toggleTechStatus(uid, status) {
    ADD TEKNISI
 ═══════════════════════════════════════════════════ */
 function openAddTeknisi() {
-  ['newTekUid', 'newTekNama', 'newTekHp', 'newTekArea'].forEach(id => document.getElementById(id).value = '');
+  ['newTekUid', 'newTekNama', 'newTekHp', 'newTekArea'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = '';
+  });
   document.getElementById('newTekShift').value = 'Pagi (07:00 - 15:00)';
+  document.getElementById('addTekError').style.display = 'none';
   document.getElementById('addTeknisiModal').classList.add('show');
 }
 function closeAddTeknisi() { document.getElementById('addTeknisiModal').classList.remove('show'); }
@@ -1999,24 +2144,24 @@ async function submitAddTeknisi() {
   const hp = document.getElementById('newTekHp').value.trim();
   const area = document.getElementById('newTekArea').value.trim();
   const shift = document.getElementById('newTekShift').value;
+  const errEl = document.getElementById('addTekError');
 
   const valid = validateUid(uid);
-  if (!valid.valid) return toast(valid.msg, 'error');
-  if (!nama) return toast('Nama wajib diisi', 'error');
+  if (!valid.valid) { errEl.textContent = valid.msg; errEl.style.display = 'block'; return; }
+  if (!nama || nama.length < 3) { errEl.textContent = 'Nama minimal 3 karakter'; errEl.style.display = 'block'; return; }
+  errEl.style.display = 'none';
 
   const btn = document.getElementById('submitTekBtn');
   btn.disabled = true;
   btn.innerHTML = '<span class="spin"></span> Membuat...';
 
   try {
-    // Cek apakah UID sudah ada
     const existSnap = await db.ref('users/' + uid).once('value');
     if (existSnap.exists()) {
-      btn.disabled = false;
-      btn.innerHTML = '<i class="fas fa-check" style="margin-right: 6px;"></i>Buat Akun';
-      return toast('UID sudah digunakan. Pakai UID lain.', 'error');
+      errEl.textContent = 'UID sudah digunakan. Pakai UID lain.';
+      errEl.style.display = 'block';
+      return;
     }
-
     await db.ref('users/' + uid).set({
       uid,
       authUid: '',
@@ -2033,12 +2178,12 @@ async function submitAddTeknisi() {
       createdBy: 'Admin NOC',
       lastLogin: 0
     });
-
-    showSuccessModal('Teknisi Dibuat!', 'UID: ' + uid + '\nNama: ' + nama + '\n\nTeknisi bisa login di pekerja.html dengan UID ini.');
+    showSuccessModal('Teknisi Dibuat!', 'UID: ' + uid + '\nNama: ' + nama + '\n\nTeknisi bisa login di pekerja.html');
     toast('Teknisi berhasil dibuat!', 'success');
     closeAddTeknisi();
   } catch (err) {
-    toast('Gagal: ' + err.message, 'error');
+    errEl.textContent = 'Gagal: ' + err.message;
+    errEl.style.display = 'block';
   } finally {
     btn.disabled = false;
     btn.innerHTML = '<i class="fas fa-check" style="margin-right: 6px;"></i>Buat Akun';
@@ -2185,20 +2330,51 @@ document.getElementById('chatInput')?.addEventListener('keypress', e => { if (e.
 ═══════════════════════════════════════════════════ */
 function renderMap() {
   const withCoord = allTickets.filter(t => t.koordinat && t.koordinat.includes(','));
-  const center = withCoord[0]?.koordinat || '-6.2088,106.8456';
-  const iframe = document.getElementById('mapFrame');
-  iframe.src = 'https://maps.google.com/maps?q=' + encodeURIComponent(center) + '&z=11&output=embed';
+  const el = document.getElementById('mapTicketList');
+  const empty = document.getElementById('mapEmpty');
+  if (!el) return;
+  if (withCoord.length === 0) {
+    el.innerHTML = '';
+    empty.style.display = 'block';
+    return;
+  }
+  empty.style.display = 'none';
 
-  document.getElementById('mapTicketList').innerHTML = withCoord.length ? withCoord.map(t =>
-    '<div class="glass" onclick="openTicketDetail(\'' + t.id + '\')" style="border-radius: 10px; padding: 12px; cursor: pointer;">' +
-    '<div style="display: flex; align-items: center; justify-content: space-between;">' +
-    '<p style="font-weight: 600; font-size: 13px;">' + escapeHtml(t.customerName || '-') + '</p>' +
-    '<span class="prio-badge-' + t.priority + '" style="padding: 2px 8px; border-radius: 999px; font-size: 10px; font-weight: 700;">' + t.priority + '</span>' +
-    '</div>' +
-    '<p style="font-size: 11px; color: #9ca3af; margin-top: 4px;" class="line-clamp-1">' + escapeHtml(t.alamat || '') + '</p>' +
-    '<p style="font-size: 10px; color: #6b7280; margin-top: 2px; font-family: ui-monospace, monospace;">' + escapeHtml(t.koordinat) + '</p>' +
-    '</div>'
-  ).join('') : '<p style="color: #6b7280; font-size: 13px; text-align: center; padding: 16px 0;">Belum ada tiket dengan koordinat</p>';
+  el.innerHTML = withCoord.map(t => {
+    const slaCls = getSLAStatus(t);
+    const slaClass = slaCls === 'bad' ? 'sla-bad' : slaCls === 'warn' ? 'sla-warn' : 'sla-ok';
+    return '<div class="glass fade-in ' + slaClass + '" style="border-radius: 12px; padding: 14px;">' +
+      '<div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 10px; margin-bottom: 10px;">' +
+      '<div style="flex: 1; min-width: 0;">' +
+      '<div style="display: flex; align-items: center; gap: 6px; margin-bottom: 4px; flex-wrap: wrap;">' +
+      '<span style="font-family: ui-monospace, monospace; font-size: 11px; color: #6b7280;">#' + t.id.substring(1, 8).toUpperCase() + '</span>' +
+      '<span class="badge ' + statusBadgeClass(t.status) + '">' + t.status + '</span>' +
+      '<span class="prio-badge-' + t.priority + '" style="padding: 2px 8px; border-radius: 999px; font-size: 10px; font-weight: 700;">' + t.priority + '</span>' +
+      '</div>' +
+      '<p style="font-weight: 600; font-size: 14px;">' + escapeHtml(t.customerName || '-') + '</p>' +
+      '<p style="font-size: 11px; color: #9ca3af; margin-top: 2px;"><i class="fas fa-phone" style="margin-right: 4px;"></i>' + escapeHtml(t.noWa || '-') + '</p>' +
+      '</div></div>' +
+      '<div style="background: rgba(0, 212, 255, 0.08); border: 1px solid rgba(0, 212, 255, 0.2); border-radius: 10px; padding: 10px; margin-bottom: 10px;">' +
+      '<p style="font-size: 11px; color: #9ca3af; margin-bottom: 4px;"><i class="fas fa-map-marker-alt" style="margin-right: 4px;"></i>Alamat</p>' +
+      '<p style="font-size: 12px; color: #e5e7eb;">' + escapeHtml(t.alamat || '-') + '</p>' +
+      '</div>' +
+      '<div style="display: flex; align-items: center; gap: 8px; background: rgba(17, 24, 39, 0.6); border-radius: 10px; padding: 10px; margin-bottom: 10px;">' +
+      '<i class="fas fa-crosshairs" style="color: #60a5fa; font-size: 16px;"></i>' +
+      '<div style="flex: 1; min-width: 0;">' +
+      '<p style="font-size: 10px; color: #6b7280;">Koordinat GPS</p>' +
+      '<p style="font-family: ui-monospace, monospace; font-size: 12px; color: #60a5fa;">' + escapeHtml(t.koordinat) + '</p>' +
+      '</div>' +
+      '<button onclick="copyText(\'' + escapeHtml(t.koordinat) + '\')" style="padding: 6px 10px; border-radius: 8px; background: rgba(96, 165, 250, 0.15); border: 1px solid rgba(96, 165, 250, 0.3); color: #60a5fa; font-size: 11px;">' +
+      '<i class="fas fa-copy"></i></button>' +
+      '</div>' +
+      '<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">' +
+      '<button onclick="openMaps(\'' + escapeHtml(t.koordinat) + '\')" class="btn-primary" style="padding: 10px; border-radius: 10px; font-size: 12px; display: flex; align-items: center; justify-content: center; gap: 6px;">' +
+      '<i class="fas fa-map"></i>Buka Google Maps</button>' +
+      '<button onclick="openTicketDetail(\'' + t.id + '\')" style="padding: 10px; border-radius: 10px; background: rgba(17, 24, 39, 0.6); border: 1px solid #1f2937; color: #e5e7eb; font-size: 12px; display: flex; align-items: center; justify-content: center; gap: 6px;">' +
+      '<i class="fas fa-eye"></i>Detail Tiket</button>' +
+      '</div>' +
+      '</div>';
+  }).join('');
 }
 
 /* ═══════════════════════════════════════════════════
@@ -2400,6 +2576,96 @@ async function recalculateRatings() {
   } catch (err) { toast('Gagal: ' + err.message, 'error'); }
 }
 
+// Toggle area input saat target = area
+document.addEventListener('change', (e) => {
+  if (e.target.id === 'maintTarget') {
+    const areaInput = document.getElementById('maintArea');
+    if (areaInput) areaInput.style.display = e.target.value === 'area' ? 'block' : 'none';
+  }
+});
+
+async function submitMaintenance() {
+  const title = document.getElementById('maintTitle').value.trim();
+  const reason = document.getElementById('maintReason').value.trim();
+  const start = document.getElementById('maintStart').value;
+  const end = document.getElementById('maintEnd').value;
+  const target = document.getElementById('maintTarget').value;
+  const area = document.getElementById('maintArea').value.trim();
+
+  if (!title || title.length < 5) return toast('Judul minimal 5 karakter', 'error');
+  if (!reason || reason.length < 10) return toast('Alasan minimal 10 karakter', 'error');
+  if (!start) return toast('Isi waktu mulai', 'error');
+  if (!end) return toast('Isi waktu selesai', 'error');
+  const startTs = new Date(start).getTime();
+  const endTs = new Date(end).getTime();
+  if (startTs >= endTs) return toast('Waktu selesai harus setelah mulai', 'error');
+  if (target === 'area' && !area) return toast('Isi nama area', 'error');
+
+  try {
+    const ref = db.ref('maintenance').push();
+    await ref.set({
+      id: ref.key,
+      title,
+      reason,
+      startAt: startTs,
+      endAt: endTs,
+      target,
+      area: target === 'area' ? area : '',
+      active: true,
+      createdAt: Date.now(),
+      createdBy: 'Admin NOC'
+    });
+    showSuccessModal('Maintenance Dijadwalkan!', 'Notifikasi akan muncul di layar customer & teknisi saat waktu tiba.');
+    toast('Maintenance dijadwalkan', 'success');
+    ['maintTitle','maintReason','maintStart','maintEnd','maintArea'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.value = '';
+    });
+    renderMaintList();
+  } catch (err) { toast('Gagal: ' + err.message, 'error'); }
+}
+
+function renderMaintList() {
+  db.ref('maintenance').orderByChild('startAt').on('value', snap => {
+    const list = [];
+    snap.forEach(c => list.push(c.val()));
+    list.sort((a, b) => b.startAt - a.startAt);
+    const el = document.getElementById('maintList');
+    if (!el) return;
+    if (list.length === 0) {
+      el.innerHTML = '<p style="font-size: 13px; color: #6b7280; text-align: center; padding: 16px 0;">Belum ada jadwal maintenance</p>';
+      return;
+    }
+    el.innerHTML = list.map(m => {
+      const now = Date.now();
+      let status = 'Dijadwalkan';
+      let color = '#facc15';
+      if (m.startAt <= now && m.endAt >= now) { status = 'Berlangsung'; color = '#fb923c'; }
+      else if (m.endAt < now) { status = 'Selesai'; color = '#34d399'; }
+      return '<div class="glass" style="border-radius: 10px; padding: 12px; border-left: 4px solid ' + color + ';">' +
+        '<div style="display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; margin-bottom: 6px;">' +
+        '<p style="font-weight: 600; font-size: 13px;">' + escapeHtml(m.title) + '</p>' +
+        '<span style="font-size: 10px; padding: 2px 8px; border-radius: 999px; background: ' + color + '22; color: ' + color + '; font-weight: 700; white-space: nowrap;">' + status + '</span>' +
+        '</div>' +
+        '<p style="font-size: 11px; color: #9ca3af;" class="line-clamp-2">' + escapeHtml(m.reason) + '</p>' +
+        '<p style="font-size: 10px; color: #6b7280; margin-top: 6px;">' +
+        '<i class="fas fa-clock" style="margin-right: 4px;"></i>' + fmtDate(m.startAt) + ' → ' + fmtDate(m.endAt) +
+        '</p>' +
+        '<button onclick="deleteMaintenance(\'' + m.id + '\')" style="margin-top: 8px; padding: 6px 10px; border-radius: 6px; background: rgba(239,68,68,0.15); border: 1px solid rgba(239,68,68,0.3); color: #f87171; font-size: 11px;">' +
+        '<i class="fas fa-trash"></i> Hapus</button>' +
+        '</div>';
+    }).join('');
+  });
+}
+
+async function deleteMaintenance(id) {
+  if (!confirm('Hapus jadwal maintenance ini?')) return;
+  try {
+    await db.ref('maintenance/' + id).remove();
+    toast('Maintenance dihapus', 'success');
+  } catch (err) { toast('Gagal: ' + err.message, 'error'); }
+}
+
 /* ═══════════════════════════════════════════════════
    BROADCAST / PENGUMUMAN
 ═══════════════════════════════════════════════════ */
@@ -2515,7 +2781,7 @@ function showView(name, ticketId) {
   if (name === 'Map') renderMap();
   if (name === 'Reports') renderReports();
   if (name === 'Users') renderUsers();
-  if (name === 'Settings') loadSettingsForm();
+  if (name === 'Settings') { loadSettingsForm(); renderMaintList(); }
 
   window.scrollTo(0, 0);
 }
