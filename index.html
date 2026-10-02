@@ -1020,18 +1020,12 @@
         </div>
       </div>
 
-                 <!-- SETTINGS -->
+      <!-- SETTINGS -->
       <div id="viewSettings" class="view">
-
-        <!-- ═══ GLASS 1: Pengaturan Sistem ═══ -->
         <div class="glass" style="border-radius: 16px; padding: 20px; margin-bottom: 16px;">
-          <h2 style="font-size: 19px; font-weight: 700; margin-bottom: 16px;">
-            <i class="fas fa-cog" style="color: #00d4ff; margin-right: 8px;"></i>Pengaturan Sistem
-          </h2>
-
+          <h2 style="font-size: 19px; font-weight: 700; margin-bottom: 16px;"><i class="fas fa-cog" style="color: #00d4ff; margin-right: 8px;"></i>Pengaturan Sistem</h2>
           <label style="font-size: 13px; color: #9ca3af; display: block; margin-bottom: 6px;">Pesan Auto-Reply Tiket Baru</label>
           <textarea id="setAutoReply" rows="3" style="width: 100%; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 12px 14px; color: #e5e7eb; outline: none; resize: vertical; font-family: inherit; font-size: 13px; margin-bottom: 14px; box-sizing: border-box;"></textarea>
-
           <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 14px;">
             <div>
               <label style="font-size: 13px; color: #9ca3af; display: block; margin-bottom: 6px;">SLA Standar (jam)</label>
@@ -1042,13 +1036,11 @@
               <input type="number" id="setSLAEmergency" min="1" style="width: 100%; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 12px 14px; color: #e5e7eb; outline: none; box-sizing: border-box;">
             </div>
           </div>
-
           <button onclick="saveSettings()" class="btn-primary" style="width: 100%; padding: 14px; border-radius: 12px; font-size: 14px;">
             <i class="fas fa-save" style="margin-right: 8px;"></i>Simpan Pengaturan
           </button>
         </div>
-
-        <!-- ═══ GLASS 2: Maintenance + Tools ═══ -->
+        <!-- MAINTENANCE -->
         <div class="glass" style="border-radius: 16px; padding: 16px; margin-bottom: 16px;">
           <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
             <h3 style="font-size: 15px; font-weight: 700; color: #facc15;">
@@ -1060,9 +1052,7 @@
           </div>
           <p style="font-size: 12px; color: #9ca3af; margin-bottom: 12px;">Maintenance aktif akan tampil sebagai popup di customer & teknisi.</p>
           <div id="maintList" style="display: flex; flex-direction: column; gap: 8px;"></div>
-
-          <div style="border-top: 1px solid #1f2937; margin: 16px 0;"></div>
-
+        </div>
           <button onclick="cleanOldTickets()" style="width: 100%; padding: 12px 14px; border-radius: 10px; border: 1px solid #1f2937; text-align: left; font-size: 13px; color: #e5e7eb; display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
             <i class="fas fa-archive" style="color: #facc15;"></i>Arsipkan tiket selesai &gt; 90 hari
           </button>
@@ -1070,14 +1060,13 @@
             <i class="fas fa-calculator" style="color: #00d4ff;"></i>Recalculate rating teknisi
           </button>
         </div>
-
       </div>
     </main>
   </div>
 
   <!-- BOTTOM NAV MOBILE -->
   <nav class="glass" id="bottomNav" style="position: fixed; bottom: 0; left: 0; right: 0; z-index: 30; border-top: 1px solid #1f2937; border-left: none; border-right: none; border-bottom: none;">
-    <div style="display: grid; grid-template-columns: repeat(6, 1fr);">
+    <div style="display: grid; grid-template-columns: repeat(5, 1fr);">
       <button onclick="showView('Dashboard')" class="bottom-nav-item active" data-nav="Dashboard" style="padding: 10px 4px; display: flex; flex-direction: column; align-items: center; gap: 2px; color: #00d4ff;">
         <i class="fas fa-chart-pie" style="font-size: 16px;"></i><span style="font-size: 10px;">Dash</span>
       </button>
@@ -1092,9 +1081,6 @@
       </button>
       <button onclick="showView('Reports')" class="bottom-nav-item" data-nav="Reports" style="padding: 10px 4px; display: flex; flex-direction: column; align-items: center; gap: 2px; color: #9ca3af;">
         <i class="fas fa-file-alt" style="font-size: 16px;"></i><span style="font-size: 10px;">Lap</span>
-      </button>
-      <button onclick="showView('Settings')" class="bottom-nav-item" data-nav="Settings" style="padding: 10px 4px; display: flex; flex-direction: column; align-items: center; gap: 2px; color: #9ca3af;">
-        <i class="fas fa-cog" style="font-size: 16px;"></i><span style="font-size: 10px;">Set</span>
       </button>
     </div>
   </nav>
