@@ -139,6 +139,128 @@
     transition: height 0.4s;
   }
   
+  /* ═══════ NEON SEEKBAR ═══════ */
+  .neon-seekbar {
+    position: relative;
+    height: 10px;
+    background: rgba(10, 14, 26, 0.8);
+    border-radius: 999px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 212, 255, 0.25);
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.5);
+  }
+  .neon-seekbar-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #00d4ff 0%, #7c3aed 50%, #00ff88 100%);
+    border-radius: 999px;
+    box-shadow: 0 0 8px #00d4ff, 0 0 16px rgba(124, 58, 237, 0.6), 0 0 24px rgba(0, 255, 136, 0.4);
+    transition: width 1s linear;
+    position: relative;
+    overflow: hidden;
+  }
+  .neon-seekbar-fill::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.4) 50%, transparent 100%);
+    animation: neonSweep 2.5s ease-in-out infinite;
+  }
+  @keyframes neonSweep {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+  .neon-seekbar-danger .neon-seekbar-fill {
+    background: linear-gradient(90deg, #ef4444 0%, #f59e0b 50%, #facc15 100%);
+    box-shadow: 0 0 8px #ef4444, 0 0 16px rgba(245, 158, 11, 0.6);
+  }
+  .neon-seekbar-success .neon-seekbar-fill {
+    background: linear-gradient(90deg, #10b981 0%, #34d399 50%, #00ff88 100%);
+    box-shadow: 0 0 8px #10b981, 0 0 16px rgba(52, 211, 153, 0.6);
+  }
+  .neon-seekbar-label {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    color: #9ca3af;
+    margin-top: 5px;
+    font-family: ui-monospace, monospace;
+    font-weight: 600;
+  }
+  .neon-seekbar-label .seek-left { color: #00d4ff; }
+  .neon-seekbar-label .seek-right { color: #7c3aed; }
+  .neon-seekbar-label .seek-pct { color: #00ff88; font-weight: 700; }
+
+  /* ═══════ MAINTENANCE POPUP ═══════ */
+  .maint-popup {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    z-index: 300;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+  }
+  .maint-popup.show { display: flex; }
+  .maint-popup .maint-box {
+    background: rgba(17, 24, 39, 0.98);
+    border-radius: 20px;
+    padding: 24px;
+    width: 100%;
+    max-width: 440px;
+    border: 2px solid;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7);
+    animation: slideUp 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .maint-popup .maint-icon {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    margin: 0 auto 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    color: #fff;
+  }
+  .maint-popup .maint-title {
+    font-size: 20px;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 8px;
+  }
+  .maint-popup .maint-desc {
+    font-size: 13px;
+    color: #d1d5db;
+    text-align: center;
+    line-height: 1.6;
+    white-space: pre-wrap;
+    margin-bottom: 20px;
+  }
+  .maint-popup .maint-timer {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 12px;
+    padding: 14px;
+    margin-bottom: 16px;
+  }
+  .maint-popup .maint-timer-top {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    color: #9ca3af;
+    margin-bottom: 10px;
+  }
+  .maint-popup .maint-info {
+    text-align: center;
+    font-size: 11px;
+    color: #6b7280;
+    line-height: 1.5;
+  }
+  .maint-popup .maint-info i { color: #f59e0b; }
+  
   /* ═══════════════════════════════════════════════
    PROGRESS DENGAN WAKTU
   ═══════════════════════════════════════════════ */
@@ -918,10 +1040,19 @@
             <i class="fas fa-save" style="margin-right: 8px;"></i>Simpan Pengaturan
           </button>
         </div>
-        <div class="glass" style="border-radius: 16px; padding: 20px;">
-          <h3 style="font-size: 14px; font-weight: 700; color: #f87171; margin-bottom: 14px;">
-            <i class="fas fa-broom" style="margin-right: 8px;"></i>Maintenance Data
-          </h3>
+        <!-- MAINTENANCE -->
+        <div class="glass" style="border-radius: 16px; padding: 16px; margin-bottom: 16px;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; flex-wrap: wrap; gap: 8px;">
+            <h3 style="font-size: 15px; font-weight: 700; color: #facc15;">
+              <i class="fas fa-tools" style="margin-right: 8px;"></i>Jadwalkan Maintenance
+            </h3>
+            <button onclick="openMaintenanceModal()" class="btn-warn" style="padding: 8px 14px; border-radius: 10px; font-size: 12px;">
+              <i class="fas fa-plus-circle" style="margin-right: 6px;"></i>Buat Maintenance
+            </button>
+          </div>
+          <p style="font-size: 12px; color: #9ca3af; margin-bottom: 12px;">Maintenance aktif akan tampil sebagai popup di customer & teknisi.</p>
+          <div id="maintList" style="display: flex; flex-direction: column; gap: 8px;"></div>
+        </div>
           <button onclick="cleanOldTickets()" style="width: 100%; padding: 12px 14px; border-radius: 10px; border: 1px solid #1f2937; text-align: left; font-size: 13px; color: #e5e7eb; display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
             <i class="fas fa-archive" style="color: #facc15;"></i>Arsipkan tiket selesai &gt; 90 hari
           </button>
@@ -1086,6 +1217,93 @@
       <button onclick="submitAddTeknisi()" id="submitTekBtn" class="btn-primary" style="flex: 1; padding: 12px; border-radius: 10px; font-size: 14px;">
         <i class="fas fa-check" style="margin-right: 6px;"></i>Buat Akun
       </button>
+    </div>
+  </div>
+</div>
+
+<!-- MAINTENANCE MODAL -->
+<div id="maintenanceModal" class="modal-overlay">
+  <div class="glass slide-up" style="border-radius: 20px; padding: 24px; width: 100%; max-width: 480px; max-height: 90vh; overflow-y: auto;">
+    <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 6px;">
+      <i class="fas fa-tools" style="color: #facc15; margin-right: 8px;"></i>
+      <span id="maintModalTitle">Jadwalkan Maintenance</span>
+    </h3>
+    <p style="font-size: 12px; color: #9ca3af; margin-bottom: 16px;">Popup akan dikirim ke semua customer & teknisi.</p>
+
+    <label style="font-size: 13px; color: #9ca3af; display: block; margin-bottom: 6px;">Judul <span style="color: #f87171;">*</span></label>
+    <input type="text" id="maintTitle" placeholder="Contoh: Maintenance Jaringan" style="width: 100%; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 12px 14px; color: #e5e7eb; outline: none; margin-bottom: 12px; font-size: 14px; box-sizing: border-box;">
+
+    <label style="font-size: 13px; color: #9ca3af; display: block; margin-bottom: 6px;">Deskripsi <span style="color: #f87171;">*</span></label>
+    <textarea id="maintDescription" rows="3" placeholder="Jelaskan detail maintenance..." style="width: 100%; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 12px 14px; color: #e5e7eb; outline: none; margin-bottom: 12px; resize: vertical; font-family: inherit; font-size: 13px; box-sizing: border-box;"></textarea>
+
+    <label style="font-size: 13px; color: #9ca3af; display: block; margin-bottom: 6px;">Status <span style="color: #f87171;">*</span></label>
+    <select id="maintStatus" style="width: 100%; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 12px 14px; color: #e5e7eb; outline: none; margin-bottom: 12px; font-size: 14px; box-sizing: border-box;">
+      <option value="info">ℹ️ Info (Biru)</option>
+      <option value="warning" selected>⚠️ Peringatan (Kuning)</option>
+      <option value="danger">🚨 Bahaya (Merah)</option>
+      <option value="critical">🆘 Kritis (Merah Terang)</option>
+    </select>
+
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px;">
+      <div>
+        <label style="font-size: 13px; color: #9ca3af; display: block; margin-bottom: 6px;">Mulai <span style="color: #f87171;">*</span></label>
+        <input type="datetime-local" id="maintStart" style="width: 100%; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 12px 10px; color: #e5e7eb; outline: none; font-size: 12px; box-sizing: border-box;">
+      </div>
+      <div>
+        <label style="font-size: 13px; color: #9ca3af; display: block; margin-bottom: 6px;">Selesai <span style="color: #f87171;">*</span></label>
+        <input type="datetime-local" id="maintEnd" style="width: 100%; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 12px 10px; color: #e5e7eb; outline: none; font-size: 12px; box-sizing: border-box;">
+      </div>
+    </div>
+
+    <!-- Preview seekbar -->
+    <div style="background: rgba(0, 0, 0, 0.3); border-radius: 10px; padding: 12px; margin-bottom: 14px;">
+      <p style="font-size: 11px; color: #9ca3af; margin-bottom: 8px;">Preview Durasi Maintenance</p>
+      <div class="neon-seekbar">
+        <div id="maintModalSeekFill" class="neon-seekbar-fill" style="width: 0%;"></div>
+      </div>
+      <div class="neon-seekbar-label">
+        <span class="seek-left"><i class="fas fa-play"></i> Mulai</span>
+        <span class="seek-pct" id="maintModalSeekPct">0%</span>
+        <span class="seek-right">Selesai <i class="fas fa-flag-checkered"></i></span>
+      </div>
+    </div>
+
+    <div id="maintModalError" style="display: none; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 10px; padding: 10px; font-size: 12px; color: #f87171; margin-bottom: 12px;"></div>
+
+    <div style="display: flex; gap: 10px;">
+      <button onclick="closeMaintenanceModal()" style="flex: 1; padding: 12px; border-radius: 10px; border: 1px solid #1f2937; color: #e5e7eb; font-size: 14px;">Batal</button>
+      <button onclick="submitMaintenance()" id="maintSubmitBtn" class="btn-warn" style="flex: 1; padding: 12px; border-radius: 10px; font-size: 14px;">
+        <i class="fas fa-paper-plane" style="margin-right: 6px;"></i>Kirim
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- EDIT MAINTENANCE MODAL -->
+<div id="editMaintModal" class="modal-overlay">
+  <div class="glass slide-up" style="border-radius: 20px; padding: 24px; width: 100%; max-width: 440px;">
+    <h3 style="font-size: 18px; font-weight: 700; margin-bottom: 6px;">
+      <i class="fas fa-edit" style="color: #00d4ff; margin-right: 8px;"></i>Edit Waktu Maintenance
+    </h3>
+    <p style="font-size: 12px; color: #9ca3af; margin-bottom: 14px;">Tambah atau kurangi waktu selesai.</p>
+
+    <label style="font-size: 13px; color: #9ca3af; display: block; margin-bottom: 6px;">Waktu Selesai Baru <span style="color: #f87171;">*</span></label>
+    <input type="datetime-local" id="editMaintEnd" style="width: 100%; background: #0a0e1a; border: 1px solid #1f2937; border-radius: 10px; padding: 12px 14px; color: #e5e7eb; outline: none; margin-bottom: 12px; font-size: 13px; box-sizing: border-box;">
+
+    <div style="display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px;">
+      <button onclick="adjustMaintEnd(-30)" class="filter-chip" style="font-size: 11px; padding: 6px 12px;">-30 menit</button>
+      <button onclick="adjustMaintEnd(-15)" class="filter-chip" style="font-size: 11px; padding: 6px 12px;">-15 menit</button>
+      <button onclick="adjustMaintEnd(15)" class="filter-chip" style="font-size: 11px; padding: 6px 12px;">+15 menit</button>
+      <button onclick="adjustMaintEnd(30)" class="filter-chip" style="font-size: 11px; padding: 6px 12px;">+30 menit</button>
+      <button onclick="adjustMaintEnd(60)" class="filter-chip" style="font-size: 11px; padding: 6px 12px;">+1 jam</button>
+      <button onclick="adjustMaintEnd(120)" class="filter-chip" style="font-size: 11px; padding: 6px 12px;">+2 jam</button>
+    </div>
+
+    <div id="editMaintError" style="display: none; background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); border-radius: 10px; padding: 10px; font-size: 12px; color: #f87171; margin-bottom: 12px;"></div>
+
+    <div style="display: flex; gap: 10px;">
+      <button onclick="closeEditMaintModal()" style="flex: 1; padding: 12px; border-radius: 10px; border: 1px solid #1f2937; color: #e5e7eb; font-size: 14px;">Batal</button>
+      <button onclick="saveEditMaint()" class="btn-primary" style="flex: 1; padding: 12px; border-radius: 10px; font-size: 14px;">Simpan</button>
     </div>
   </div>
 </div>
@@ -1492,6 +1710,7 @@ function afterLogin(isSessionRestore) {
   }
   loadSettings();
   applyResponsive();
+  startMaintenanceListener();
   toast(isSessionRestore ? 'Session dipulihkan' : 'Selamat datang, Admin!', 'success');
 }
 
@@ -1972,6 +2191,236 @@ function loadTicketDetailModal(id) {
     // Panggil render progress history
     setTimeout(function() { renderProgressHistory(id); }, 100);
   } catch (err) { logErr('loadTicketDetailModal error', err); }
+}
+
+/* ═══════════════════════════════════════════════
+   MAINTENANCE SYSTEM — ADMIN
+═══════════════════════════════════════════════ */
+var maintListenerStarted = false;
+var maintTicker = null;
+
+function startMaintenanceListener() {
+  if (maintListenerStarted) return;
+  maintListenerStarted = true;
+  db.ref('maintenance').on('value', function(snap) {
+    var arr = [];
+    snap.forEach(function(c) {
+      var v = c.val() || {};
+      if (!v.id) v.id = c.key;
+      arr.push(v);
+    });
+    arr.sort(function(a, b) { return (b.createdAt || 0) - (a.createdAt || 0); });
+    renderMaintList(arr);
+  });
+}
+
+function renderMaintList(arr) {
+  var el = $('maintList');
+  if (!el) return;
+  if (!arr || arr.length === 0) {
+    el.innerHTML = '<p style="font-size: 13px; color: #6b7280; text-align: center; padding: 16px 0;">Belum ada maintenance</p>';
+    return;
+  }
+  var now = Date.now();
+  el.innerHTML = arr.map(function(m) {
+    var isActive = m.active !== false;
+    var isRunning = isActive && now >= m.startAt && now < m.endAt;
+    var isEnded = now >= m.endAt;
+    var isScheduled = now < m.startAt;
+
+    var color = isRunning ? '#f59e0b' : (isEnded ? '#6b7280' : (isActive ? '#34d399' : '#6b7280'));
+    var statusText = isRunning ? '🟡 Berlangsung' : (isEnded ? '⚫ Berakhir' : (isActive ? '🟢 Dijadwalkan' : '⚪ Nonaktif'));
+
+    var progress = 0;
+    if (isRunning) {
+      progress = Math.min(100, Math.round(((now - m.startAt) / (m.endAt - m.startAt)) * 100));
+    } else if (isEnded) progress = 100;
+
+    var html = '<div class="glass" style="border-radius: 12px; padding: 14px; border-left: 4px solid ' + color + ';">';
+    html += '<div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; margin-bottom: 8px;">';
+    html += '<div style="flex: 1; min-width: 0;">';
+    html += '<p style="font-weight: 700; font-size: 14px;">' + escapeHtml(m.title || '-') + '</p>';
+    html += '<p style="font-size: 11px; color: #9ca3af; margin-top: 4px;" class="line-clamp-2">' + escapeHtml(m.description || '-') + '</p>';
+    html += '</div>';
+    html += '<span style="font-size: 10px; padding: 3px 8px; border-radius: 999px; background: ' + color + '22; color: ' + color + '; font-weight: 700; white-space: nowrap;">' + statusText + '</span>';
+    html += '</div>';
+
+    html += '<div style="margin: 10px 0;">';
+    html += '<div class="neon-seekbar' + (isRunning ? '' : (isEnded ? ' neon-seekbar-success' : '')) + '">';
+    html += '<div class="neon-seekbar-fill" style="width: ' + progress + '%;"></div>';
+    html += '</div>';
+    html += '<div class="neon-seekbar-label">';
+    html += '<span class="seek-left">' + fmtTime(m.startAt) + '</span>';
+    html += '<span class="seek-pct">' + progress + '%</span>';
+    html += '<span class="seek-right">' + fmtTime(m.endAt) + '</span>';
+    html += '</div></div>';
+
+    html += '<div style="display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px;">';
+    if (isActive) {
+      html += '<button onclick="openEditMaintModal(\'' + m.id + '\')" class="btn-primary" style="padding: 6px 12px; border-radius: 8px; font-size: 11px;"><i class="fas fa-edit" style="margin-right: 4px;"></i>Edit Waktu</button>';
+      html += '<button onclick="deactivateMaint(\'' + m.id + '\')" class="btn-warn" style="padding: 6px 12px; border-radius: 8px; font-size: 11px;"><i class="fas fa-eye-slash" style="margin-right: 4px;"></i>Nonaktifkan</button>';
+    } else {
+      html += '<button onclick="reactivateMaint(\'' + m.id + '\')" class="btn-success" style="padding: 6px 12px; border-radius: 8px; font-size: 11px;"><i class="fas fa-eye" style="margin-right: 4px;"></i>Aktifkan</button>';
+    }
+    html += '<button onclick="deleteMaint(\'' + m.id + '\')" class="btn-danger" style="padding: 6px 12px; border-radius: 8px; font-size: 11px;"><i class="fas fa-trash" style="margin-right: 4px;"></i>Hapus</button>';
+    html += '</div></div>';
+    return html;
+  }).join('');
+}
+
+function openMaintenanceModal() {
+  ['maintTitle', 'maintDescription'].forEach(function(id) { var el = $(id); if (el) el.value = ''; });
+  var st = $('maintStatus'); if (st) st.value = 'warning';
+  var now = new Date();
+  var startStr = new Date(now.getTime() - now.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
+  var endDate = new Date(now.getTime() + 60 * 60000);
+  var endStr = new Date(endDate.getTime() - endDate.getTimezoneOffset() * 60000).toISOString().slice(0, 16);
+  var s1 = $('maintStart'); if (s1) s1.value = startStr;
+  var s2 = $('maintEnd'); if (s2) s2.value = endStr;
+  var err = $('maintModalError'); if (err) err.style.display = 'none';
+  updateMaintModalSeek();
+  var m = $('maintenanceModal'); if (m) m.classList.add('show');
+}
+
+function closeMaintenanceModal() { var m = $('maintenanceModal'); if (m) m.classList.remove('show'); }
+
+function updateMaintModalSeek() {
+  var s1 = $('maintStart'); var s2 = $('maintEnd');
+  if (!s1 || !s2 || !s1.value || !s2.value) return;
+  var start = new Date(s1.value).getTime();
+  var end = new Date(s2.value).getTime();
+  if (end <= start) {
+    var f = $('maintModalSeekFill'); if (f) f.style.width = '0%';
+    var p = $('maintModalSeekPct'); if (p) p.textContent = '0%';
+    return;
+  }
+  // Preview 0% (baru mulai)
+  var f = $('maintModalSeekFill'); if (f) f.style.width = '0%';
+  var p = $('maintModalSeekPct'); if (p) p.textContent = '0%';
+}
+
+document.addEventListener('change', function(e) {
+  if (e.target && (e.target.id === 'maintStart' || e.target.id === 'maintEnd')) updateMaintModalSeek();
+});
+
+async function submitMaintenance() {
+  var title = ($('maintTitle') || {}).value || '';
+  var description = ($('maintDescription') || {}).value || '';
+  var status = ($('maintStatus') || {}).value || 'warning';
+  var s1 = ($('maintStart') || {}).value || '';
+  var s2 = ($('maintEnd') || {}).value || '';
+  var errEl = $('maintModalError');
+  title = title.trim(); description = description.trim();
+
+  if (title.length < 3) { errEl.textContent = 'Judul minimal 3 karakter'; errEl.style.display = 'block'; return; }
+  if (description.length < 10) { errEl.textContent = 'Deskripsi minimal 10 karakter'; errEl.style.display = 'block'; return; }
+  if (!s1 || !s2) { errEl.textContent = 'Isi waktu mulai & selesai'; errEl.style.display = 'block'; return; }
+  var startAt = new Date(s1).getTime();
+  var endAt = new Date(s2).getTime();
+  if (endAt <= startAt) { errEl.textContent = 'Waktu selesai harus setelah mulai'; errEl.style.display = 'block'; return; }
+  errEl.style.display = 'none';
+
+  var btn = $('maintSubmitBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spin"></span> Mengirim...';
+
+  try {
+    var ref = db.ref('maintenance').push();
+    await ref.set({
+      id: ref.key,
+      title: title,
+      description: description,
+      status: status,
+      startAt: startAt,
+      endAt: endAt,
+      active: true,
+      createdAt: Date.now(),
+      createdBy: 'Admin NOC'
+    });
+    showSuccessModal('Maintenance Dijadwalkan!', 'Popup akan muncul di customer & teknisi saat waktu tiba.');
+    toast('Maintenance dikirim', 'success');
+    closeMaintenanceModal();
+  } catch (err) {
+    errEl.textContent = 'Gagal: ' + err.message;
+    errEl.style.display = 'block';
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = '<i class="fas fa-paper-plane" style="margin-right: 6px;"></i>Kirim';
+  }
+}
+
+/* Edit waktu */
+var editingMaintId = null;
+
+function openEditMaintModal(id) {
+  editingMaintId = id;
+  db.ref('maintenance/' + id).once('value').then(function(snap) {
+    var m = snap.val();
+    if (!m) return;
+    var d = new Date(m.endAt);
+    d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
+    var el = $('editMaintEnd');
+    if (el) el.value = d.toISOString().slice(0, 16);
+    var err = $('editMaintError'); if (err) err.style.display = 'none';
+    var modal = $('editMaintModal'); if (modal) modal.classList.add('show');
+  });
+}
+
+function closeEditMaintModal() {
+  var m = $('editMaintModal'); if (m) m.classList.remove('show');
+  editingMaintId = null;
+}
+
+function adjustMaintEnd(minutes) {
+  var el = $('editMaintEnd'); if (!el || !el.value) return;
+  var cur = new Date(el.value).getTime();
+  var next = cur + minutes * 60000;
+  var d = new Date(next);
+  d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
+  el.value = d.toISOString().slice(0, 16);
+}
+
+async function saveEditMaint() {
+  if (!editingMaintId) return;
+  var el = $('editMaintEnd');
+  var err = $('editMaintError');
+  if (!el || !el.value) { if (err) { err.textContent = 'Isi waktu selesai'; err.style.display = 'block'; } return; }
+  var newEnd = new Date(el.value).getTime();
+  try {
+    var snap = await db.ref('maintenance/' + editingMaintId).once('value');
+    var m = snap.val();
+    if (!m) { toast('Data tidak ditemukan', 'error'); return; }
+    if (newEnd <= m.startAt) { if (err) { err.textContent = 'Selesai harus setelah mulai'; err.style.display = 'block'; } return; }
+    await db.ref('maintenance/' + editingMaintId).update({ endAt: newEnd, updatedAt: Date.now() });
+    toast('Waktu maintenance diupdate', 'success');
+    closeEditMaintModal();
+  } catch (e) {
+    if (err) { err.textContent = 'Gagal: ' + e.message; err.style.display = 'block'; }
+  }
+}
+
+async function deactivateMaint(id) {
+  if (!confirm('Nonaktifkan maintenance ini? Popup akan langsung hilang dari customer & teknisi.')) return;
+  try {
+    await db.ref('maintenance/' + id).update({ active: false, deactivatedAt: Date.now() });
+    toast('Maintenance dinonaktifkan', 'success');
+  } catch (e) { toast('Gagal: ' + e.message, 'error'); }
+}
+
+async function reactivateMaint(id) {
+  if (!confirm('Aktifkan kembali maintenance ini?')) return;
+  try {
+    await db.ref('maintenance/' + id).update({ active: true, reactivatedAt: Date.now() });
+    toast('Maintenance diaktifkan', 'success');
+  } catch (e) { toast('Gagal: ' + e.message, 'error'); }
+}
+
+async function deleteMaint(id) {
+  if (!confirm('Hapus maintenance ini permanen?')) return;
+  try {
+    await db.ref('maintenance/' + id).remove();
+    toast('Maintenance dihapus', 'success');
+  } catch (e) { toast('Gagal: ' + e.message, 'error'); }
 }
 
 /* ═══════════════════════════════════════════════
@@ -3304,6 +3753,7 @@ function startCountdownTicker() {
   if (progressTicker) return;
   progressTicker = setInterval(function() {
     var now = Date.now();
+    // Update countdown badge
     document.querySelectorAll('[data-deadline]').forEach(function(el) {
       var deadline = parseInt(el.dataset.deadline);
       var confirmed = el.dataset.confirmed === 'true';
@@ -3314,7 +3764,21 @@ function startCountdownTicker() {
         el.className = 'countdown-badge countdown-expired';
       } else {
         el.textContent = '⏱️ ' + formatCountdown(remaining);
-        el.className = 'countdown-badge countdown-running';
+        el.className = 'countdown-badge countdown-active';
+      }
+    });
+    // ✅ Update seekbar progress
+    document.querySelectorAll('.neon-seekbar-fill[data-seek-start]').forEach(function(el) {
+      var startAt = parseInt(el.dataset.seekStart);
+      var endAt = parseInt(el.dataset.seekEnd);
+      var done = el.dataset.seekDone === 'true';
+      if (done) return;
+      if (endAt > startAt) {
+        var pct = Math.max(0, Math.min(100, Math.round(((now - startAt) / (endAt - startAt)) * 100)));
+        el.style.width = pct + '%';
+        var parent = el.closest('.neon-seekbar').parentElement;
+        var pctLabel = parent ? parent.querySelector('.seek-pct') : null;
+        if (pctLabel) pctLabel.textContent = pct + '%';
       }
     });
   }, 1000);
@@ -3416,7 +3880,27 @@ function renderProgressHistory(ticketId) {
         '</div>' +
         '</div>' +
         (p.note ? '<p style="font-size:12px;color:#d1d5db;margin-top:6px;line-height:1.4;">' + escapeHtml(p.note) + '</p>' : '') +
-        (!isDone ? '<p style="font-size:10px;color:#6b7280;margin-top:4px;">⏱️ Estimasi: ' + (p.durationMinutes || 0) + ' menit</p>' : '') +
+        (!isDone ? // Seekbar progress untuk estimasi
+        (function() {
+          var now2 = Date.now();
+          var startAt = p.at || 0;
+          var endAt = p.deadline || 0;
+          var pct = 0;
+          var isDone2 = p.status === 'Selesai';
+          if (isDone2) pct = 100;
+          else if (endAt > startAt) pct = Math.max(0, Math.min(100, Math.round(((now2 - startAt) / (endAt - startAt)) * 100)));
+          var seekCls = isDone2 ? 'neon-seekbar-success' : (pct >= 100 ? 'neon-seekbar-danger' : '');
+          return '<div style="margin-top:8px;">' +
+            '<div class="neon-seekbar ' + seekCls + '">' +
+            '<div class="neon-seekbar-fill" data-seek-start="' + startAt + '" data-seek-end="' + endAt + '" data-seek-done="' + isDone2 + '" style="width:' + pct + '%;"></div>' +
+            '</div>' +
+            '<div class="neon-seekbar-label">' +
+            '<span class="seek-left">' + fmtTime(startAt) + '</span>' +
+            '<span class="seek-pct">' + pct + '%</span>' +
+            '<span class="seek-right">' + (endAt ? fmtTime(endAt) : '-') + '</span>' +
+            '</div>' +
+            '</div>';
+        })() +
         confirmBtn +
         '</div>';
     }).join('');
